@@ -1,9 +1,11 @@
-FROM tomcat:jre21
+FROM tomcat
 LABEL devtom="prat"
+WORKDIR /usr/share/tomcat/
 RUN git clone https://github.com/PratikBorge/Webapps.git
-RUN cp ./Webapps/student.war ./apache-tomcat-8-5.99/Webapps
-RUN cp ./Webapps/mysql-connector.jar ./apache-tomcat-8-5.99/lib
-RUN cp ./Webapps/context.xml ./apache-tomcat-8-5.99/conf/context.xml
-WORKDIR /apache-tomcat-8-5.99/bin/
-EXPOSE 8080
+RUN cp ./Webapps/student.war ./webapps
+RUN cp ./Webapps/mysql-connector.jar ./lib
+RUN cp ./Webapps/context.xml ./conf/context.xml
+WORKDIR /usr/share/tomcat/webapps.dist/
+RUN cp -R * ../webapps
+WORKDIR /usr/share/tomcat/bin/
 CMD ["catalina.sh", "run"]
