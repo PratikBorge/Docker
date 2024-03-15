@@ -1,8 +1,5 @@
 FROM tomcat:jre21
 LABEL devtom="prat"
-
-RUN wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.99/bin/apache-tomcat-8.5.99.tar.gz
-RUN tar -xzvf apache-tomcat-8.5.99.tar.gz
 RUN git clone https://github.com/PratikBorge/Webapps.git
 RUN cp ./Webapps/student.war ./apache-tomcat-8-5.99/Webapps
 RUN cp ./Webapps/mysql-connector.jar ./apache-tomcat-8-5.99/lib
