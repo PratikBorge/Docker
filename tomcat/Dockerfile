@@ -9,4 +9,5 @@ RUN cp ./Webapps/context.xml ./conf/context.xml
 WORKDIR /usr/share/tomcat/webapps.dist/
 RUN cp -R * ../webapps
 WORKDIR /usr/share/tomcat/bin/
+EXPOSE 8080
 CMD ["catalina.sh", "run"]
